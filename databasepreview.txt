@@ -1,0 +1,5 @@
+Products Table             Review Table
+
+product_id :integer        review_id :integer
+                           message :text
+                           product_id :integer
