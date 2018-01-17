@@ -1,5 +1,5 @@
 <div class="product">
-  <p>Name: <%= link_to(product.name, product_path(product.id)) %></p>
-  <p>Description: <%= product.description %></p>
-  <p>Price: <%= product.price_in_dollars %></p>
+  <p><strong><%= link_to("Name: ", product_path(product.id)) %></strong><%= link_to(product.name, product_path(product.id)) %></p>
+  <p><strong><%= link_to("Description: ", product_path(product.id)) %></strong><%= link_to(product.description, product_path(product.id)) %></p>
+  <p><strong><%= link_to("Price: ", product_path(product.id)) %></strong><%= link_to(product.price_in_dollars, product_path(product.id)) %></p>
 </div>
