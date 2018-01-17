@@ -3,10 +3,16 @@
 <p>Description: <%= @product.description %></p>
 <p>Price: <%= @product.price_in_dollars %></p>
 <hr>
+
+<h4>New Review</h4>
+<%= render 'reviews/form', review: @reviews, product: @product %>
+
+
 <h3>Reviews</h3>
 <% @reviews.each do |review| %>
   <article>
     <p>Message: <%= review.message %></p>
-    <p><%= review.created_at %></p>
+    <p><%= review.created_at %></p> <%= link_to '(edit)', edit_product_review_path(review.id)  %>
+
   </article>
 <% end %>
