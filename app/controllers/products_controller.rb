@@ -7,7 +7,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @reviews = @product.reviews
+#   Stretch Goal: Sort the list of reviews
+#   Make sure the list of reviews on the product show page is sorted so the newest reviews appear at the top of the list.
+    @reviews = @product.reviews.order(created_at: :desc)
     @review = Review.new()
   end
 
