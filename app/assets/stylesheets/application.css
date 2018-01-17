@@ -48,7 +48,8 @@ nav a:hover {
 }
 
 p {
-
+  margin: 5px;
+  padding: 5px;
 }
 
 .product a {
@@ -75,7 +76,7 @@ p {
 
 .product {
   margin-left: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 h4 {
@@ -94,12 +95,23 @@ h4 {
 
 article {
   margin-left: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+article p {
+  text-decoration: none;
+  color: crimson;
+  font-size: 15px;
 }
 
 article a {
   text-decoration: none;
   color: crimson;
   font-size: 15px;
-  marg
+  margin: 15px 10px;
+}
+
+.notice {
+  color: crimson;
+  margin: 15px 13px;
 }
