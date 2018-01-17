@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :set_product_and_review, only: [:edit, :update]
+
   def create
     @product = Product.find(params[:product_id]) # finds product
     @reviews = @product.reviews # has all product's reviews
@@ -15,13 +17,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:product_id])
-    @review = Review.find(params[:id])
     @review.message = params[:review][:message]
     if @review.save
       flash[:notice] = "You have successfully edited the review!"
@@ -38,4 +36,8 @@ class ReviewsController < ApplicationController
     redirect_to product_path(params[:product_id])
   end
 
+  def set_product_and_review
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+  end
 end

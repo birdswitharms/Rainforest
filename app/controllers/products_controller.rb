@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
 
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+
   def index
     @products = Product.all
   end
 
   def show
-    @product = Product.find(params[:id])
     @reviews = @product.reviews
     @review = Review.new()
   end
@@ -25,11 +26,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     @product.update(product_params)
     if @product.save
       flash[:notice] = "You have successfully edited the product!"
@@ -44,10 +43,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     flash[:notice] = "You have successfully deleted the product!"
     redirect_to products_path
   end
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end
