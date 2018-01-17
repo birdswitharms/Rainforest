@@ -8,14 +8,34 @@ class ReviewsController < ApplicationController
     @review.product = @product # sends product object to reivew .product method (product_id)
    if @review.save
      flash[:notice] = "You have successfully created a new review!"
-     redirect_to products_path
+     redirect_to product_path(params[:product_id])
    else
      render "products/show"
    end
   end
 
   def edit
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+  end
 
+  def update
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+    @review.message = params[:review][:message]
+    if @review.save
+      flash[:notice] = "You have successfully edited the review!"
+      redirect_to product_path(params[:id])
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    flash[:notice] = "You have successfully deleted the review!"
+    redirect_to product_path(params[:product_id])
   end
 
 end
